@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn with Purab — India's Best Online Learning Application</title>
+<meta name="description" content="Purab — India's best online learning application. Learn anytime, anywhere with games, safety and fast results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+  :root{
+    --bg:#eeeeec;
+    --bg-soft:#e4e3de;
+    --card:#f6f5f1;
+    --ink:#1c1917;
+    --ink-soft:#6b6459;
+    --gold:#c9982f;
+    --gold-light:#f1cf7d;
+    --gold-deep:#8f6c1e;
+    --green:#157a45;
+    --line:#d9d7cf;
+    --shadow: 0 20px 45px -20px rgba(90,80,50,.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--bg-soft);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:480px;
+    margin:0 auto;
+    background:var(--bg);
+    box-shadow:0 0 60px rgba(0,0,0,.08);
+    min-height:100vh;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+  }
+
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .display{font-family:'Fraunces', serif;}
+
+  /* ===== TRUST TICKER ===== */
+  .ticker-wrap{
+    background:var(--ink);
+    color:#f3ead1;
+    overflow:hidden;
+    white-space:nowrap;
+    position:sticky;
+    top:0;
+    z-index:50;
+    border-bottom:1px solid var(--gold-deep);
+  }
+  .ticker-track{
+    display:inline-flex;
+    gap:56px;
+    padding:11px 0;
+    animation:scroll-left 20s linear infinite;
+    font-size:13.5px;
+    letter-spacing:.01em;
+  }
+  .ticker-track span{display:inline-flex; align-items:center; gap:8px; font-weight:600; color:#f1cf7d;}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:26px 18px 44px;
+    text-align:center;
+    background:
+      radial-gradient(60% 42% at 50% 0%, #e9e2cd 0%, rgba(233,226,205,0) 70%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-120px; left:50%;
+    width:640px; height:640px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(201,152,47,.12) 0%, rgba(201,152,47,0) 68%);
+    pointer-events:none;
+  }
+
+  .badge-live{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:9px 20px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--card);
+    box-shadow:0 2px 14px rgba(0,0,0,.05);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:var(--ink);
+    opacity:0;
+    animation:rise .7s ease forwards;
+  }
+  .dot-live{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--green);
+    position:relative;
+  }
+  .dot-live::after{
+    content:"";
+    position:absolute; inset:-5px;
+    border-radius:50%;
+    border:2px solid var(--green);
+    animation:pulse-ring 1.8s cubic-bezier(.4,0,.6,1) infinite;
+  }
+  @keyframes pulse-ring{
+    0%{transform:scale(.6); opacity:.9;}
+    100%{transform:scale(1.9); opacity:0;}
+  }
+
+  .avatar-wrap{
+    position:relative;
+    width:104px; height:104px;
+    margin:22px auto 18px;
+    opacity:0;
+    animation:rise .8s ease .12s forwards;
+  }
+  .avatar-ring{
+    position:absolute; inset:-7px;
+    border-radius:50%;
+    background:conic-gradient(from 0deg, var(--gold-light), var(--gold), var(--gold-deep), var(--gold), var(--gold-light));
+    animation:spin 6s linear infinite;
+  }
+  .avatar-ring::after{
+    content:"";
+    position:absolute; inset:5px;
+    border-radius:50%;
+    background:var(--bg);
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  .avatar-img{
+    position:absolute; inset:9px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 14px 30px -8px rgba(90,70,20,.4);
+    background:var(--card);
+  }
+  .avatar-img img{width:100%; height:100%; object-fit:cover;}
+  .verified{
+    position:absolute;
+    right:0px; bottom:0px;
+    width:28px; height:28px;
+    border-radius:50%;
+    background:var(--green);
+    border:3px solid var(--bg);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .verified svg{width:13px; height:13px;}
+
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.16em;
+    color:var(--gold-deep);
+    opacity:0;
+    animation:rise .7s ease .22s forwards;
+  }
+
+  h1.brand{
+    font-size:clamp(2rem, 10vw, 2.7rem);
+    line-height:1.08;
+    font-weight:700;
+    margin:10px 0 14px;
+    letter-spacing:-.01em;
+    opacity:0;
+    animation:rise .8s ease .3s forwards;
+  }
+  h1.brand .accent{
+    display:block;
+    font-weight:900;
+    font-style:italic;
+    background:linear-gradient(100deg, var(--gold-deep) 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, var(--gold-deep) 100%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shimmer 5s linear infinite;
+  }
+  @keyframes shimmer{
+    to{background-position:-250% center;}
+  }
+
+  /* animated join counter, placed right under heading */
+  .social-proof{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-weight:600;
+    opacity:0;
+    animation:rise .7s ease .4s forwards;
+  }
+  .social-proof b{
+    color:var(--gold-deep);
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .tagline-main{
+    margin-top:22px;
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.35;
+    opacity:0;
+    animation:rise .7s ease .48s forwards;
+  }
+
+  .cta{
+    display:block;
+    max-width:400px;
+    margin:26px auto 0;
+    padding:18px 22px;
+    border-radius:22px;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+    opacity:0;
+    animation:rise .7s ease .56s forwards;
+  }
+  .cta:hover{transform:translateY(-3px) scale(1.015); box-shadow:0 26px 55px -18px rgba(110,85,20,.5);}
+  .cta:active{transform:translateY(-1px) scale(.99);}
+  .cta::after{
+    content:"";
+    position:absolute; top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
+    animation:sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep{
+    0%{left:-60%;}
+    45%{left:120%;}
+    100%{left:120%;}
+  }
+  .cta-inner{display:flex; align-items:center; gap:16px; position:relative; z-index:1;}
+  .cta-icon{
+    width:44px; height:44px; flex:0 0 auto;
+    border-radius:12px;
+    background:rgba(255,255,255,.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cta-icon svg{width:24px; height:24px; color:#3c2c05;}
+  .cta-text{text-align:left;}
+  .cta-title{font-size:17px; font-weight:800; color:#2c2205; letter-spacing:.01em;}
+  .cta-sub{font-size:13px; color:#4d3c10; font-weight:500; margin-top:2px;}
+
+  @keyframes rise{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ===== EXCLUSIVE FEATURES ===== */
+  .features{
+    padding:60px 20px 70px;
+    background:var(--bg-soft);
+    border-top:1px solid var(--line);
+  }
+  .features-head{
+    text-align:center;
+    max-width:520px;
+    margin:0 auto 34px;
+  }
+  .features-head .eyebrow{opacity:1; animation:none; color:var(--gold-deep);}
+  .features-head h2{
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.5rem, 4vw, 2rem);
+    font-weight:600;
+    margin-top:8px;
+    line-height:1.25;
+  }
+  .grid{
+    max-width:960px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:20px 22px;
+    text-align:left;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 34px -20px rgba(110,85,20,.3);
+    border-color:var(--gold-light);
+  }
+  .card-icon{
+    width:46px; height:46px; flex:0 0 auto;
+    border-radius:13px;
+    background:linear-gradient(135deg, #f1e5be, #e6ce8f);
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+  }
+  .card-body h3{font-size:16px; font-weight:700; margin-bottom:3px;}
+  .card-body p{font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+
+  /* ===== DISCLAIMER ===== */
+  .disclaimer-section{
+    padding:44px 20px 52px;
+    background:var(--bg);
+  }
+  .disclaimer-box{
+    max-width:960px;
+    margin:0 auto;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:14px;
+    padding:20px 22px;
+  }
+  .disclaimer-title{
+    font-size:13.5px;
+    font-weight:800;
+    letter-spacing:.02em;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .disclaimer-text{
+    font-size:12.5px;
+    line-height:1.65;
+    color:var(--ink-soft);
+  }
+  .disclaimer-text + .disclaimer-text{margin-top:8px;}
+
+  footer{
+    padding:26px 24px 40px;
+    text-align:center;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+  footer .brandmark{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:6px;
+    letter-spacing:.02em;
+    font-size:16px;
+  }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Trust marquee -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="badge-live">
+      <span class="dot-live"></span>
+      Enrollments Open
+    </span>
+
+    <!-- 🖼️ Logo: upload your own image to the repo as "logo.jpg" (same folder as this file) -->
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-img">
+        <img src="logo.jpg" alt="Purab logo">
+      </div>
+      <div class="verified">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+
+    <p class="eyebrow">ONLINE LEARNING PLATFORM</p>
+    <h1 class="brand display">
+      Learn with
+      <span class="accent">Purab</span>
+    </h1>
+
+    <p class="social-proof">🔥 <b id="joinCount">0</b>+ logon ne already join kiya</p>
+
+    <p class="tagline-main">India's Best Online Learning Application</p>
+
+    <!-- 🔗 Download link: replace href="#" below with your actual app / Play Store link -->
+    <a class="cta" href="#" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined'){fbq('track','Subscribe');}">
+      <span class="cta-inner">
+        <span class="cta-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v13m0 0l-4.5-4.5M12 16l4.5-4.5M4 20h16" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="cta-text">
+          <span class="cta-title">Download App</span>
+          <span class="cta-sub">Free • Fast • Secure</span>
+        </span>
+      </span>
+    </a>
+  </section>
+
+  <!-- EXCLUSIVE FEATURES -->
+  <section class="features">
+    <div class="features-head reveal">
+      <p class="eyebrow">EXCLUSIVE FEATURES</p>
+      <h2>Why learners choose Purab</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon">🎂</div>
+        <div class="card-body">
+          <h3>Minimum Age</h3>
+          <p>Open for learners aged 13 and above — start your learning journey whenever you're ready.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🎓</div>
+        <div class="card-body">
+          <h3>Minimum Graduation</h3>
+          <p>No graduation or prior degree required — beginner-friendly courses designed for everyone.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">⏱️</div>
+        <div class="card-body">
+          <h3>Time</h3>
+          <p>Just 20-30 minutes a day — flexible, self-paced lessons that fit around your routine.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🎮</div>
+        <div class="card-body">
+          <h3>Games</h3>
+          <p>Interactive games and quizzes make every lesson fun and easy to remember.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">🛡️</div>
+        <div class="card-body">
+          <h3>Safety</h3>
+          <p>A 100% safe and secure platform — your data and privacy are always protected.</p>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">⚡</div>
+        <div class="card-body">
+          <h3>Fast Results</h3>
+          <p>Track visible progress within weeks with structured, goal-based learning paths.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER (Meta compliance) -->
+  <section class="disclaimer-section">
+    <div class="disclaimer-box reveal">
+      <p class="disclaimer-title">⚠️ Disclaimer</p>
+      <p class="disclaimer-text">This application is intended solely for learning and educational purposes. It does not guarantee any specific job, income, certification, or outcome of any kind.</p>
+      <p class="disclaimer-text">All courses, games, and activities are designed to support self-paced skill development. Individual results may vary depending on effort and consistency.</p>
+      <p class="disclaimer-text">By downloading and using this application, you agree to our Terms & Conditions and Privacy Policy.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brandmark display">Purab</div>
+    <p>India's best online learning application. For learning and educational purposes only.</p>
+  </footer>
+
+</div>
+<script>
+  // Trust marquee content (looped twice for seamless scroll)
+  const tickerData = [
+    '🔥 25,000+ Students Enrolled',
+    '📚 Learn Anytime, Anywhere',
+    '🛡️ 100% Safe & Secure',
+    '⭐ Rated 4.8/5 by Learners',
+    '🎮 Fun, Game-Based Lessons',
+  ];
+  const track = document.getElementById('tickerTrack');
+  const doubled = [...tickerData, ...tickerData];
+  track.innerHTML = doubled.map(t => `<span>${t}</span>`).join('');
+
+  // Animated join counter
+  const target = 25000;
+  const el = document.getElementById('joinCount');
+  let started = false;
+  function countUp(){
+    if(started) return;
+    started = true;
+    let cur = 0;
+    const step = Math.ceil(target / 60);
+    const iv = setInterval(() => {
+      cur += step;
+      if(cur >= target){ cur = target; clearInterval(iv); }
+      el.textContent = cur.toLocaleString('en-IN');
+    }, 20);
+  }
+  setTimeout(countUp, 900);
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
